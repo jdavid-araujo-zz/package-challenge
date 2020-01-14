@@ -4,23 +4,23 @@ import java.util.List;
 
 public class Package {
 	
-	private Double weight;
+	private Integer weight;
 	
 	private List<Item> items;
 	
 	public Package() {}
 
-	public Package(Double weight, List<Item> items) {
+	public Package(Integer weight, List<Item> items) {
 		super();
 		this.weight = weight;
 		this.items = items;
 	}
 
-	public Double getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public void setWeight(Double weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 
