@@ -1,12 +1,13 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Package {
 	
 	private Integer weight;
 	
-	private List<Item> items;
+	private List<Item> items = new ArrayList<>();
 	
 	public Package() {}
 

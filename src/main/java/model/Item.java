@@ -6,9 +6,11 @@ public class Item {
 	
 	private Double weight;
 	
-	private Double cost;
+	private Integer cost;
 
-	public Item(Integer index, Double weight, Double cost) {
+	public Item() {}
+	
+	public Item(Integer index, Double weight, Integer cost) {
 		super();
 		this.index = index;
 		this.weight = weight;
@@ -31,11 +33,11 @@ public class Item {
 		this.weight = weight;
 	}
 
-	public Double getCost() {
+	public Integer getCost() {
 		return cost;
 	}
 
-	public void setCost(Double cost) {
+	public void setCost(Integer cost) {
 		this.cost = cost;
 	}
 	

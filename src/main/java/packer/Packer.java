@@ -44,20 +44,43 @@ public class Packer {
 	private static String getPackage(String line) {
 		Matcher m = RegexUtil.getNumberByRegex(line);
 		StringBuffer result = new StringBuffer();
-
+		int i = 1;
 		Package pck = new Package();
+		Item item = new Item();
+		
+		 //while(m.find()) {
+		//	 System.out.println(String.valueOf(m.));
+		// }
+			 m.find();
+		pck.setWeight(Integer.parseInt((m.group())));
 
-		pck.setWeight(Integer.parseInt((m.group(0))));
-
-		for (int i = 1; i < m.groupCount(); i += 3) {
-			pck.getItems().add(new Item(Integer.parseInt(m.group(i)), Double.parseDouble(m.group(i + 1)),
-					Double.parseDouble(m.group(i + 2))));
+		//for (int i = 1; i < m.groupCount(); i += 3) {
+		//	pck.getItems().add(new Item(Integer.parseInt(m.group(i)), Double.parseDouble(m.group(i + 1)),
+	//				Double.parseDouble(m.group(i + 2))));
+	//	}
+		
+		while(m.find()) {
+			if(i % 3 == 1) {
+				item.setIndex(Integer.parseInt(m.group()));
+			}
+			
+			if(i % 3 == 2) {
+				item.setWeight(Double.parseDouble(m.group()));
+			}
+	
+			if(i % 3 == 0) {
+				item.setCost(Integer.parseInt(m.group()));
+				pck.getItems().add(item);
+				item = new Item();
+			}
+			
+			i++;
 		}
 
 		List<String> indexList = packerRecursive.getIndex(pck);
 
 		if (!indexList.isEmpty()) {
-			result.append(indexList.stream().map(i -> i.toString()).collect(Collectors.joining(",")));
+			result.append(indexList.stream().map(index -> index.toString()).collect(Collectors.joining(",")));
 		} else {
 			result.append("-");
 		}
