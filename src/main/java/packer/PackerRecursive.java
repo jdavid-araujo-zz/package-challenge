@@ -22,7 +22,7 @@ public class PackerRecursive {
 		/*
 		 * Compute the recursion tree, keeping track of visited items
 		 */
-		Integer maxValue = maximizeValueFor(pck.getWeight(), wt, val, pck.getItems().size(), visited);
+		Integer maxValue = maximizeValue(pck.getWeight(), wt, val, pck.getItems().size(), visited);
 		
 		List<String> solutionItems = new ArrayList<>();
 		for ( int i = 0; i < pck.getItems().size(); i++ ) {
@@ -47,15 +47,15 @@ public class PackerRecursive {
 	 * @param visited 
 	 * @return maximum value for the package
 	 */
-	private Integer maximizeValueFor(Integer W, Double wt[], Integer val[], Integer N, Boolean visited[]) {
+	private Integer maximizeValue(Integer W, Double wt[], Integer val[], Integer N, Boolean visited[]) {
 
 		if (N == 0 || W == 0) {
-			return 0; // base case
+			return 0; // stopping point
 		}
 
 		if ( wt[N-1] > W ) {
 		
-			return maximizeValueFor(W, wt, val, N-1,visited); // overflow capacity, reject item
+			return maximizeValue(W, wt, val, N-1,visited); // overflow capacity, reject item
 			
 		}  else {
 
@@ -71,8 +71,8 @@ public class PackerRecursive {
        
 			v1[N-1] = true;
 
-			Integer s1 = val[N-1] + maximizeValueFor(W-wt[N-1].intValue(), wt, val, N-1,v1);
-			Integer s2 = maximizeValueFor(W, wt, val, N-1,v2);
+			Integer s1 = val[N-1] + maximizeValue(W-wt[N-1].intValue(), wt, val, N-1,v1);
+			Integer s2 = maximizeValue(W, wt, val, N-1,v2);
        
 			if( s1 > s2 ){
 				System.arraycopy(v1, 0, visited, 0, v1.length);
