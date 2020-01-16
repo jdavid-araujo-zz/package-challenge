@@ -9,7 +9,11 @@ import model.Package;
 
 public class PackerRecursive {
 	
-	
+	/**
+	 * 
+	 * @param pck the object that contain the items and limit size
+	 * @return the list of index 
+	 */
 	public List<String> getIndex(Package pck) {
 		
 		pck.getItems().sort((item1, item2) -> item1.getWeight().compareTo(item2.getWeight()));

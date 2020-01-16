@@ -1,4 +1,3 @@
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import exception.APIException;
@@ -16,7 +14,7 @@ import packer.Packer;
 
 public class PackerTest {
 
-	private String path = "src\\test\\resources\\input-sample.txt";
+	private String path = "src\\test\\resources\\input-sample1.txt";
 	private String path1 = "src\\test\\resources\\input-sample2.txt";
 	private String path3 = "src\\test\\resources\\input-sample3.txt";
 	private String path4 = "src\\test\\resources\\input-sample4.txt";
@@ -70,7 +68,7 @@ public class PackerTest {
 	}
 	
 	@Test()
-	public void checkWhenTheStringHaveNegativeValue() {
+	public void makeExceptionWhenItemWeightMoreThan100() {
         Exception exception = assertThrows(
 			APIException.class, 
 			() -> Packer.pack(path1));
@@ -80,7 +78,7 @@ public class PackerTest {
 	
 	
 	@Test()
-	public void checkWhenTheStringHaveNegativeValue1() {
+	public void makeExceptionWhenItemCostMoreThan100() {
         Exception exception = assertThrows(
 			APIException.class, 
 			() -> Packer.pack(path3));
@@ -89,7 +87,7 @@ public class PackerTest {
 	}
 	
 	@Test()
-	public void checkWhenTheStringHaveNegativeValue2() {
+	public void makeExceptionWhenPackageWightMoreThan100() {
         Exception exception = assertThrows(
 			APIException.class, 
 			() -> Packer.pack(path4));
@@ -98,7 +96,7 @@ public class PackerTest {
 	}
 	
 	@Test()
-	public void checkWhenTheStringHaveNegativeValue3() {
+	public void makeExceptionWhenItemsMoreThan15() {
         Exception exception = assertThrows(
 			APIException.class, 
 			() -> Packer.pack(path5));

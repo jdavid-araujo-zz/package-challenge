@@ -36,7 +36,7 @@ public class Packer {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new APIException("It is not possible process the operation");
 		}
 
 		return result.toString();
